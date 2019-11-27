@@ -25,7 +25,23 @@
 			resizeEvent.initUIEvent('resize', true, false, window, 0); 
 			window.dispatchEvent(resizeEvent);
 		}, 3000);
-	};	
+	};
+		const times = [];
+let fps;
+
+function refreshLoop() {
+  window.requestAnimationFrame(() => {
+    const now = performance.now();
+    while (times.length > 0 && times[0] <= now - 1000) {
+      times.shift();
+    }
+    times.push(now);
+    fps = times.length;
+    refreshLoop();
+  });
+}
+
+refreshLoop();
 	</script>	
 </head>
 
@@ -51,7 +67,6 @@
 			<!-- name, it just loops all the animations of the model  -->
 			 <a-entity 
 				 
-				  fps-counter
 				  gltf-model="#robot" 
 				  animation-mixer>
 			</a-entity>
