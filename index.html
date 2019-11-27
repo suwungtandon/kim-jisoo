@@ -48,14 +48,14 @@
 	   
 		 <!-- Defines the marker that we are going to use. Notice that we are not providing the image file, but the  -->
 		 <!-- "compiled" .patt file that we got from the online tool. the marker MUST BE ACCESSIBLE VIA HTTPS -->
-		 <a-marker preset='custom' type='pattern' url='./marker-patt/pattern-blackpink.patt'>
+		 <a-marker preset='custom' type='pattern' url='./marker-patt/pattern-ji.patt'>
 		 
 			<!-- Here we define the content to show on the marker when it gets detected: the GLTF model of the robot that we specified above. -->
 			<!-- Notice the mention to the name robot that we specified above. -->
 			<!-- The animation-mixer is the A-frame component to control the animation of the 3D model. Since we are not specifiying any animation -->
 			<!-- name, it just loops all the animations of the model  -->
 			 <a-entity 
-				  posituin="0 0 0"
+				  position="0 0 0"
 				  gltf-model="#robot" 
 				  animation-mixer soundhandler>
 			</a-entity>
