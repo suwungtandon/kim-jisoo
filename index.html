@@ -26,31 +26,7 @@
 			window.dispatchEvent(resizeEvent);
 		}, 3000);
 	};
-//////////////////////////////////////////////////////////////////////////////////
-//      render the whole thing on the page
-//////////////////////////////////////////////////////////////////////////////////
-var stats = new Stats();
-document.body.appendChild(stats.dom);
-// render the scene
-onRenderFcts.push(function() {
-    renderer.render(scene, camera);
-    stats.update();
-})
 
-// run the rendering loop
-var lastTimeMsec = null
-requestAnimationFrame(function animate(nowMsec) {
-    // keep looping
-    requestAnimationFrame(animate);
-    // measure time
-    lastTimeMsec = lastTimeMsec || nowMsec - 1000 / 60
-    var deltaMsec = Math.min(200, nowMsec - lastTimeMsec)
-    lastTimeMsec = nowMsec
-    // call each update function
-    onRenderFcts.forEach(function(onRenderFct) {
-        onRenderFct(deltaMsec / 1000, nowMsec / 1000)
-    })
-})
 	</script>	
 </head>
 
@@ -85,4 +61,27 @@ requestAnimationFrame(function animate(nowMsec) {
 		 <!-- Define the camera of the scene -->
          <a-entity camera></a-entity> 
     </a-scene>
+	<script>
+		var stats = new Stats();
+	document.body.appendChild( stats.dom );
+	// render the scene
+	onRenderFcts.push(function(){
+		renderer.render( scene, camera );
+		stats.update();
+	})
+	// run the rendering loop
+	var lastTimeMsec= null
+	requestAnimationFrame(function animate(nowMsec){
+		// keep looping
+		requestAnimationFrame( animate );
+		// measure time
+		lastTimeMsec	= lastTimeMsec || nowMsec-1000/60
+		var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec)
+		lastTimeMsec	= nowMsec
+		// call each update function
+		onRenderFcts.forEach(function(onRenderFct){
+			onRenderFct(deltaMsec/1000, nowMsec/1000)
+		})
+	})
+	</script>
 </body>
