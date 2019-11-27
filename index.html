@@ -36,10 +36,10 @@
 	 
 		 <!-- Here we load the asset of the robot, pointing to its file. A-frame works with GLTF and GLB models. -->
 		 <!-- We define a name for this asset, that is "robot" -->
-		 <a-assets>
+	<a-assets>
 		    <!-- BrainStem model created by Keith Hunter and owned by Smith Micro Software, Inc. Exported from Poser and made available under clause (g) of “Legitimate Uses” as defined by the Poser Pro EULA. -->
             <a-asset-item id="robot" src="./assets/BrainStem.glb"></a-asset-item>
-         </a-assets>
+        </a-assets>
 	   
 		 <!-- Defines the marker that we are going to use. Notice that we are not providing the image file, but the  -->
 		 <!-- "compiled" .patt file that we got from the online tool. the marker MUST BE ACCESSIBLE VIA HTTPS -->
@@ -49,8 +49,8 @@
 			<!-- Notice the mention to the name robot that we specified above. -->
 			<!-- The animation-mixer is the A-frame component to control the animation of the 3D model. Since we are not specifiying any animation -->
 			<!-- name, it just loops all the animations of the model  -->
-			<a-entity hand-controls>
 			 <a-entity 
+				  hand-controls
 				  fps-counter
 				  gltf-model="#robot" 
 				  animation-mixer>
