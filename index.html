@@ -26,22 +26,31 @@
 			window.dispatchEvent(resizeEvent);
 		}, 3000);
 	};
-		const times = [];
-let fps;
+//////////////////////////////////////////////////////////////////////////////////
+//      render the whole thing on the page
+//////////////////////////////////////////////////////////////////////////////////
+var stats = new Stats();
+document.body.appendChild(stats.dom);
+// render the scene
+onRenderFcts.push(function() {
+    renderer.render(scene, camera);
+    stats.update();
+})
 
-function refreshLoop() {
-  window.requestAnimationFrame(() => {
-    const now = performance.now();
-    while (times.length > 0 && times[0] <= now - 1000) {
-      times.shift();
-    }
-    times.push(now);
-    fps = times.length;
-    refreshLoop();
-  });
-}
-
-refreshLoop();
+// run the rendering loop
+var lastTimeMsec = null
+requestAnimationFrame(function animate(nowMsec) {
+    // keep looping
+    requestAnimationFrame(animate);
+    // measure time
+    lastTimeMsec = lastTimeMsec || nowMsec - 1000 / 60
+    var deltaMsec = Math.min(200, nowMsec - lastTimeMsec)
+    lastTimeMsec = nowMsec
+    // call each update function
+    onRenderFcts.forEach(function(onRenderFct) {
+        onRenderFct(deltaMsec / 1000, nowMsec / 1000)
+    })
+})
 	</script>	
 </head>
 
