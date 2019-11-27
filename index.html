@@ -33,7 +33,7 @@
 	<!-- a-scene defines the scene that we are agoing to use. After arjs= there are various options that can be customized  -->
 	<!-- depending on your needs. For now just stick with these ones -->
     <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
-		 
+	 
 		 <!-- Here we load the asset of the robot, pointing to its file. A-frame works with GLTF and GLB models. -->
 		 <!-- We define a name for this asset, that is "robot" -->
 		 <a-assets>
@@ -49,9 +49,14 @@
 			<!-- Notice the mention to the name robot that we specified above. -->
 			<!-- The animation-mixer is the A-frame component to control the animation of the 3D model. Since we are not specifiying any animation -->
 			<!-- name, it just loops all the animations of the model  -->
-			<a-entity gltf-model="#robot" animation-mixer></a-entity>
+			<a-entity hand-controls>
+			 <a-entity 
+				  fps-counter
+				  gltf-model="#robot" 
+				  animation-mixer>
+			</a-entity>
 			
-         </a-marker>
+         	</a-marker>
 		 
 		 <!-- Define the camera of the scene -->
          <a-entity camera></a-entity> 
