@@ -15,8 +15,9 @@
 	<!-- of the 3D model of the robot -->
 	<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>	
 	
-	<!-- import events.js script -->
-    	<script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
+	<!-- import events.js script
+    	<script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>-->
+	
 	<!-- This is a hack because at the time of writing there are some distortions in the provided visuals until the  -->
 	<!-- system receives a resize event. The resize event must be triggered when everything has been loaded and the  -->
 	<!-- camera has been initialized. All the events I tried didn't work, so in the end I resorted using a 3 seconds -->
@@ -61,19 +62,22 @@
 				  id="animated-model"
 				  position="0 0 0"
 				  gltf-model="#animated-asset" 
-				  scale="2"
 				  animation-mixer soundhandler>
 			</a-entity>
 			
          	</a-marker>
+	    	 <!--add sound entity>-->
 		 <a-entity sound="src: #sound" autoplay="false"></a-entity>
+	    
 		 <!-- Define the camera of the scene -->
          <a-entity camera></a-entity> 
     </a-scene>
-
+	<!--test FPS>-->
 	<script>
 		javascript:(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()
 	</script>
+	
+	<!-- add soundhandler when detect marker>-->
 	<script>
 	AFRAME.registerComponent('soundhandler', {
 	    tick: function () {
