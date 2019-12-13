@@ -58,8 +58,10 @@
 			<!-- The animation-mixer is the A-frame component to control the animation of the 3D model. Since we are not specifiying any animation -->
 			<!-- name, it just loops all the animations of the model  -->
 			 <a-entity 
+				  id="animated-model"
 				  position="0 0 0"
-				  gltf-model="#robot" 
+				  gltf-model="#animated-asset" 
+				  scale= "3"
 				  animation-mixer soundhandler>
 			</a-entity>
 			
